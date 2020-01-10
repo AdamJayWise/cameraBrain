@@ -31,28 +31,17 @@ function createLikert(param, label, vector, targetSelection){
         $('<option>').prop('value', n).text(choice).appendTo(newSelect)
     })
 
+    var colorDict = {'0':'#d4d4d4', '1':'#d6b0b0', '2':'#d68383'};
+
     newSelect.change(function(){
         console.log($(this).prop('value'));
         vector[param] = Number($(this).prop('value'));
         console.log(vector)
+        $(this).css('background-color', colorDict[$(this).prop('value')]);
         drawTable();
     })
     newSelect.appendTo(selectDiv)
 }
-
-// function to create a likert scale object and attach it to a form object
-var newTable = $('<table></table>').attr('id','newTable').appendTo($('#outputTable'))
-
-
-for(var i = 0; i<10; i++){
-    var myRow = $('<tr>').appendTo(newTable); // kinda anonymously append a row to the table
-    for (var j = 0; j<10; j++){
-        $('<td>').text(j).appendTo(myRow)
-    }
-
-}
-
-//unlike d3, appending an element B to element A returns A.
 
 likertDiv = $('#inputForm')
 
@@ -62,7 +51,7 @@ createLikert('peakQE', 'Peak QE', params, likertDiv);
 createLikert('lowDarkNoise', 'Low Dark Noise', params, likertDiv);
 createLikert('lowReadNoise', 'Low Read Noise', params, likertDiv);
 createLikert('squareness', 'Imaging (square) Sensor', params, likertDiv);
-
+createLikert('numPixels', 'Number of Pixels', params, likertDiv);
 
 
 
@@ -70,8 +59,6 @@ createLikert('squareness', 'Imaging (square) Sensor', params, likertDiv);
 // ok I need a table draw function
 
 function drawTable(){
-    // remove any old tables
-    $('table').remove();
 
     var camKeys = Object.keys(cameraDefs);
     var camOrder = {};
@@ -83,8 +70,26 @@ function drawTable(){
         console.log(key, dotProd)
         camOrder[key] = dotProd;
     })
-    camKeys.sort(function(x,y){ return (camOrder[x]-camOrder[y]) });
+    camKeys.sort(function(x,y){ return (camOrder[y]-camOrder[x]) });
     console.log(camKeys);
+
+    // remove any old tables
+    $('table').remove();
+
+    // draw a table to the #outputTable div
+    $('<table>').attr('id','resultTable').appendTo($('#outputTable'));
+    camKeys.forEach(function(k){
+        var newRow = $('<tr>');
+        newRow.appendTo($('#resultTable'));
+        $('<td>').text(cameraDefs[k]['displayName']).appendTo(newRow);
+        $('<td>').text(Math.round(100*camOrder[k])/100).appendTo(newRow);
+        var linkTd = $('<td>');
+        linkTd.appendTo(newRow)
+        $('<a>').text('Link').prop('href', cameraDefs[k]['productLink']).appendTo(linkTd)
+    });
+
 }
+
+drawTable();
 
 

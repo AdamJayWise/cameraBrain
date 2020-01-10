@@ -15,7 +15,9 @@ var cameraDefs = {
         frameRateHzSlow: 0.03,
         darkCurrent : 0.019,
         containerDivID : 'subContainer',
-        displayName: 'Zyla 5.5 10-Tap'},
+        displayName: 'Zyla 5.5 10-Tap',
+        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/zyla-5-5-scmos'
+    },
 
     'zyla42' : {
         shortName : 'Zyla42',
@@ -34,7 +36,9 @@ var cameraDefs = {
         frameRateHzSlow: 0.03,
         darkCurrent : 0.019,
         containerDivID : 'subContainer',
-        displayName: 'Zyla 4.2+ 10-Tap'},
+        displayName: 'Zyla 4.2+ 10-Tap',
+        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/zyla-4-2-scmos'
+    },
 
         'balor' : {
             shortName : 'Balor',
@@ -53,7 +57,9 @@ var cameraDefs = {
             frameRateHzSlow: 0.03,
             darkCurrent : 0.03,
             containerDivID : 'subContainer',
-            displayName: 'Balor'},
+            displayName: 'Balor',
+            productLink : 'https://andor.oxinst.com/products/scmos-camera-series/balor-scmos',
+        },
 
     
         'sona42' : {
@@ -72,7 +78,9 @@ var cameraDefs = {
         frameRateHzSlow: 0.03,
         darkCurrent : 0.2,
         containerDivID : 'subContainer',
-        displayName: 'Sona 4.2'},
+        displayName: 'Sona 4.2',
+        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/sona-scmos',
+    },
 
     'idus420' : {
         shortName : 'idus420',
@@ -89,7 +97,9 @@ var cameraDefs = {
         frameRateHzSlow: 0.03,    
         darkCurrent : 0.008,    
         containerDivID : 'subContainer',
-        displayName : 'Idus 420 BEX2-DD'},
+        displayName : 'Idus 420 BEX2-DD',
+        productLink : 'https://andor.oxinst.com/products/idus-spectroscopy-cameras/idus-420',
+    },
 
     'iXon888' : {
         shortName : 'iXonUltra888',
@@ -108,7 +118,9 @@ var cameraDefs = {
         frameRateHzSlow: 0.03,
         emGain : 1,
         containerDivID : 'subContainer',
-        displayName: 'iXon Ultra 888 BV'},
+        displayName: 'iXon Ultra 888 BV',
+        productLink : 'https://andor.oxinst.com/products/ixon-emccd-camera-series/ixon-ultra-888',
+    },
 
     'newton971' : {
         shortName : 'Newton971',
@@ -126,7 +138,9 @@ var cameraDefs = {
         darkCurrent : 0.00020,
         containerDivID : 'subContainer',
         emGain : 1, 
-        displayName: 'Newton 971 BV'},
+        displayName: 'Newton 971 BV',
+        productLink : 'https://andor.oxinst.com/products/newton-ccd-and-emccd-cameras/newton-971',
+    },
 
         'iKonM934-BEX2-DD' : {
             shortName : 'iKonM934',
@@ -144,20 +158,35 @@ var cameraDefs = {
             frameRateHzFast : 2.6,
             frameRateHzSlow: 0.03 ,
            containerDivID : 'subContainer',
-           displayName: 'iKon-M 934 BEX2-DD'}
+           displayName: 'iKon-M 934 BEX2-DD',
+            productLink : 'https://andor.oxinst.com/products/ikon-xl-and-ikon-large-ccd-series/ikon-m-934',
+        }
 }
 
 var cameraKeys = Object.keys(cameraDefs);
 
 cameraKeys.forEach(function(key){
+
+    // generic camera "speed" - just using the fastest framerate / 100
     cameraDefs[key]['speed'] = cameraDefs[key]['frameRateHzFast']/100;
-    cameraDefs[key]['spatialRes'] = 1/cameraDefs[key]['xPixelSize'];
+
+    // Spatial resolution, just using inverse of pixel size.  range is [6/26,1]
+    cameraDefs[key]['spatialRes'] = 6.5/cameraDefs[key]['xPixelSize'];
+
+    // Peak QE, just in [0,1]
     cameraDefs[key]['peakQE'] = cameraDefs[key]['QE'];
+
+    // Dark noise score, should revise this somehow
     cameraDefs[key]['lowDarkNoise'] = 0.00011 / cameraDefs[key]['darkCurrent'];
+
+    // read noise score, should revise this somehow
     cameraDefs[key]['lowReadNoise'] = 1 / cameraDefs[key]['readNoiseFast'];
 
-    // automatically create an aspect ratio
+    // squareness score, just the aspect ratio
     var x1 = cameraDefs[key]['yPixels'];
     var x2 = cameraDefs[key]['xPixels'];
     cameraDefs[key]['squareness'] =  Math.min(x1, x2) / Math.max(x1, x2);
+
+    // number of pixels score
+    cameraDefs[key]['numPixels'] = cameraDefs[key]['xPixels'] * cameraDefs[key]['yPixels'] / (4.2*10**6);
 })
