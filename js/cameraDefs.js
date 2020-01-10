@@ -1,6 +1,6 @@
 var cameraDefs = {
-    'zyla55' : {
-        shortName : 'Zyla55',
+    'zyla5510tap' : {
+        shortName : 'zyla5510tap',
         xPixels : 2560,
         yPixels : 2160,
         xPixelSize : 6.5,
@@ -19,8 +19,8 @@ var cameraDefs = {
         productLink : 'https://andor.oxinst.com/products/scmos-camera-series/zyla-5-5-scmos'
     },
 
-    'zyla42' : {
-        shortName : 'Zyla42',
+    'zyla4210tap' : {
+        shortName : 'Zyla4210tap',
         hasRealImage : true,
         xPixels : 2048,
         yPixels : 2048,
@@ -62,7 +62,47 @@ var cameraDefs = {
         },
 
     
-        'sona42' : {
+        'sona42b6coax' : {
+        shortName : 'Sona42b6coax',
+        xPixels : 2048,
+        yPixels : 2048,
+        xPixelSize : 6.5,
+        yPixelSize : 6.5,
+        readNoise : 1.2,
+        readNoiseFast : 1.2,
+        readNoiseSlow : 1.6,
+        QE : 0.95,
+        CIC : 0,
+        frameRateHz : 74,
+        frameRateHzFast : 74,
+        frameRateHzSlow: 43,
+        darkCurrent : 0.1,
+        containerDivID : 'subContainer',
+        displayName: 'Sona 4.2B-6 (CoaXPress)',
+        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/sona-scmos',
+    },
+
+    'sona42b6usb' : {
+        shortName : 'Sona42b6usb',
+        xPixels : 2048,
+        yPixels : 2048,
+        xPixelSize : 6.5,
+        yPixelSize : 6.5,
+        readNoise : 1.2,
+        readNoiseFast : 1.2,
+        readNoiseSlow : 1.6,
+        QE : 0.95,
+        CIC : 0,
+        frameRateHz : 43,
+        frameRateHzFast : 40,
+        frameRateHzSlow: 43,
+        darkCurrent : 0.1,
+        containerDivID : 'subContainer',
+        displayName: 'Sona 4.2B-6 (USB3)',
+        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/sona-scmos',
+    },
+
+    'sona42' : {
         shortName : 'Sona42',
         xPixels : 2048,
         yPixels : 2048,
@@ -160,7 +200,29 @@ var cameraDefs = {
            containerDivID : 'subContainer',
            displayName: 'iKon-M 934 BEX2-DD',
             productLink : 'https://andor.oxinst.com/products/ikon-xl-and-ikon-large-ccd-series/ikon-m-934',
+        },
+
+        'iKonXL231-BV' : {
+            shortName : 'iKonXL231-BV',
+            xPixels : 4096,
+            yPixels : 4108,
+            xPixelSize : 15,
+            yPixelSize : 15,
+            readNoise : 2.1,
+            readNoiseFast : 9.8,
+            readNoiseSlow : 2.1,
+            darkCurrent : 0.00013,
+            QE : 0.95,
+            CIC : 0,
+            frameRateHz : 0.5,
+            frameRateHzFast : 0.5,
+            frameRateHzSlow: 0.022 ,
+           containerDivID : 'subContainer',
+           displayName: 'iKon-XL 231 BV',
+            productLink : 'https://andor.oxinst.com/products/ikon-xl-and-ikon-large-ccd-series/ikon-xl-231',
         }
+
+
 }
 
 var cameraKeys = Object.keys(cameraDefs);
@@ -180,7 +242,7 @@ cameraKeys.forEach(function(key){
     cameraDefs[key]['lowDarkNoise'] = 0.00011 / cameraDefs[key]['darkCurrent'];
 
     // read noise score, should revise this somehow
-    cameraDefs[key]['lowReadNoise'] = 1 / cameraDefs[key]['readNoiseFast'];
+    cameraDefs[key]['lowReadNoise'] = 1 / Math.sqrt(cameraDefs[key]['readNoiseFast']);
 
     // squareness score, just the aspect ratio
     var x1 = cameraDefs[key]['yPixels'];
