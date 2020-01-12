@@ -1,3 +1,27 @@
+// Definition for different cameras and models
+// It seemed reasonable to break out each one by sensor and interface as needed
+// I think I will break out the wavelengths into peak QE @ different wavelength zones
+// e.g., UV (200-400), vis (400-700), NIR (700-1000)
+
+/*
+already added:
+
+Zyla 5.5 10 tap
+Zyla 4.2 10 tap
+Balor 17F-12
+Sona 4.2 coaxpress
+Sona 4.2 USB
+Idus 420 BEX2-DD
+iXon Ultra 888 BV
+Newton 971 BV
+iKon-M 934 BEX2-DD
+iKon-XL 231 BV
+
+to add:
+*/
+
+
+
 var cameraDefs = {
     'zyla5510tap' : {
         shortName : 'zyla5510tap',
@@ -40,8 +64,30 @@ var cameraDefs = {
         productLink : 'https://andor.oxinst.com/products/scmos-camera-series/zyla-4-2-scmos'
     },
 
+    'neo' : {
+        shortName : 'neo',
+        hasRealImage : true,
+        xPixels : 2560,
+        yPixels : 2160,
+        readNoise : 1,
+        readNoiseFast : 1,
+        readNoiseSlow : 1 ,
+        xPixelSize : 6.5,
+        yPixelSize : 6.5,
+        QE : 0.6,
+        CIC : 0,
+        frameRateHz : 100,
+        frameRateHzFast : 100,
+        frameRateHzSlow: 0.03,
+        darkCurrent : 0.007,
+        containerDivID : 'subContainer',
+        displayName: 'Neo 5.5',
+        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/neo-5-5-scmos'
+    },
+
+
         'balor' : {
-            shortName : 'Balor',
+            shortName : 'balor',
             hasRealImage : true,
             xPixels : 4128,
             yPixels : 4104,
@@ -57,7 +103,7 @@ var cameraDefs = {
             frameRateHzSlow: 0.03,
             darkCurrent : 0.03,
             containerDivID : 'subContainer',
-            displayName: 'Balor',
+            displayName: 'Balor 17F-12',
             productLink : 'https://andor.oxinst.com/products/scmos-camera-series/balor-scmos',
         },
 
@@ -102,26 +148,6 @@ var cameraDefs = {
         productLink : 'https://andor.oxinst.com/products/scmos-camera-series/sona-scmos',
     },
 
-    'sona42' : {
-        shortName : 'Sona42',
-        xPixels : 2048,
-        yPixels : 2048,
-        xPixelSize : 11,
-        yPixelSize : 11,
-        readNoise : 1.6,
-        readNoiseFast : 1.6,
-        readNoiseSlow : 1.6,
-        QE : 0.95,
-        CIC : 0,
-        frameRateHz : 24,
-        frameRateHzFast : 24,
-        frameRateHzSlow: 0.03,
-        darkCurrent : 0.2,
-        containerDivID : 'subContainer',
-        displayName: 'Sona 4.2',
-        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/sona-scmos',
-    },
-
     'idus420' : {
         shortName : 'idus420',
         xPixels : 1024,
@@ -141,7 +167,7 @@ var cameraDefs = {
         productLink : 'https://andor.oxinst.com/products/idus-spectroscopy-cameras/idus-420',
     },
 
-    'iXon888' : {
+    'iXon888bv' : {
         shortName : 'iXonUltra888',
         xPixels : 1024,
         yPixels : 1024,
@@ -162,8 +188,29 @@ var cameraDefs = {
         productLink : 'https://andor.oxinst.com/products/ixon-emccd-camera-series/ixon-ultra-888',
     },
 
-    'newton971' : {
-        shortName : 'Newton971',
+    'iXonUltra897bv' : {
+        shortName : 'iXonUltra897bv',
+        xPixels : 512,
+        yPixels : 512,
+        xPixelSize : 16,
+        yPixelSize : 16,    
+        readNoise : 0.13,
+        readNoiseFast: 0.13,
+        readNoiseSlow: 0.012,
+        QE : 0.95,
+        CIC : 0.005,
+        darkCurrent : 0.00011,
+        frameRateHz : 56,
+        frameRateHzFast: 56,
+        frameRateHzSlow: 0.12,
+        emGain : 1,
+        containerDivID : 'subContainer',
+        displayName: 'iXon Ultra 897 BV',
+        productLink : 'https://andor.oxinst.com/products/ixon-emccd-camera-series/ixon-ultra-897',
+    },
+
+    'newton971bv' : {
+        shortName : 'Newton971bv',
         xPixels : 1600,
         yPixels : 400,
         xPixelSize : 16,
@@ -180,6 +227,26 @@ var cameraDefs = {
         emGain : 1, 
         displayName: 'Newton 971 BV',
         productLink : 'https://andor.oxinst.com/products/newton-ccd-and-emccd-cameras/newton-971',
+    },
+
+    'newton970bv' : {
+        shortName : 'Newton970bv',
+        xPixels : 1600,
+        yPixels : 200,
+        xPixelSize : 16,
+        yPixelSize : 16,
+        readNoise : 0.04,
+        readNoiseFast : 0.04,
+        readNoiseSlow : 0.0028,
+        QE : 0.95,
+        frameRateHz : 20,
+        frameRateHzFast : 20,
+        frameRateHzSlow: 0.06,
+        darkCurrent : 0.00020,
+        containerDivID : 'subContainer',
+        emGain : 1, 
+        displayName: 'Newton 970 BV',
+        productLink : 'https://andor.oxinst.com/products/newton-ccd-and-emccd-cameras/newton-970',
     },
 
         'iKonM934-BEX2-DD' : {
@@ -200,6 +267,26 @@ var cameraDefs = {
            containerDivID : 'subContainer',
            displayName: 'iKon-M 934 BEX2-DD',
             productLink : 'https://andor.oxinst.com/products/ikon-xl-and-ikon-large-ccd-series/ikon-m-934',
+        },
+
+        'iKonL936-BV' : {
+            shortName : 'iKonL936-BV',
+            xPixels : 2048,
+            yPixels : 2048,
+            xPixelSize : 13.5,
+            yPixelSize : 13.5,
+            readNoise : 2.9,
+            readNoiseFast : 2.9,
+            readNoiseSlow : 2.9,
+            darkCurrent : 0.000059,
+            QE : 0.95,
+            CIC : 0,
+            frameRateHz : 1,
+            frameRateHzFast : 1,
+            frameRateHzSlow: 0.011 ,
+           containerDivID : 'subContainer',
+           displayName: 'iKon-L 936 BV',
+            productLink : 'https://andor.oxinst.com/products/ikon-xl-and-ikon-large-ccd-series/ikon-l-936',
         },
 
         'iKonXL231-BV' : {
@@ -250,5 +337,10 @@ cameraKeys.forEach(function(key){
     cameraDefs[key]['squareness'] =  Math.min(x1, x2) / Math.max(x1, x2);
 
     // number of pixels score
-    cameraDefs[key]['numPixels'] = cameraDefs[key]['xPixels'] * cameraDefs[key]['yPixels'] / (4.2*10**6);
+    cameraDefs[key]['numPixels'] = cameraDefs[key]['xPixels'] * cameraDefs[key]['yPixels'] / 16941312;
+
+    // Sensor diagonal / size score
+    var xSize = (cameraDefs[key]['xPixels'] * cameraDefs[key]['xPixelSize']);
+    var ySize = (cameraDefs[key]['yPixels'] * cameraDefs[key]['yPixelSize']);
+    cameraDefs[key]['sensorArea'] = Math.sqrt( xSize**2 + ySize**2) / 87016.65	;
 })

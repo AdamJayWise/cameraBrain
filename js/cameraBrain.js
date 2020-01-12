@@ -44,7 +44,7 @@ function createLikert(param, label, vector, targetSelection){
     newSelect.prop('id', param);
     newSelect.prop('class', 'likertSelect');
 
-    var choices = ['Not Important', 'Somewhat Important', 'Very Important']
+    var choices = ['Not Important', 'Important', 'Very Important']
     
     choices.forEach(function(choice, n){
         $('<option>').prop('value', n).text(choice).appendTo(newSelect)
@@ -66,11 +66,12 @@ likertDiv = $('#inputForm')
 
 createLikert('speed', 'Framerate', params, likertDiv);
 createLikert('spatialRes', 'Spatial Resolution', params, likertDiv);
-createLikert('peakQE', 'Peak QE', params, likertDiv);
+createLikert('peakQE', 'Overall Max QE', params, likertDiv);
 createLikert('lowDarkNoise', 'Low Dark Noise', params, likertDiv);
 createLikert('lowReadNoise', 'Low Read Noise', params, likertDiv);
 createLikert('squareness', 'Imaging (square) Sensor', params, likertDiv);
 createLikert('numPixels', 'Number of Pixels', params, likertDiv);
+createLikert('sensorArea', 'Sensor Size', params, likertDiv);
 
 
 function dotProduct(obj1, obj2){
@@ -113,6 +114,14 @@ function drawTable(){
 
     // draw a table to the #outputTable div
     $('<table>').attr('id','resultTable').appendTo($('#outputTable'));
+
+    // add column labels to the table
+    var labelRow = $('<tr>');
+    labelRow.appendTo($('#resultTable'));
+    labelRow.append($('<td>').text('Camera Name').css('text-align','center').css('font-weight','bold'));
+    labelRow.append($('<td>').text('Score')).css('text-align','center').css('font-weight','bold');
+    labelRow.append($('<td>').text('More Info')).css('text-align','center').css('font-weight','bold');
+
     camKeys.forEach(function(k){
         var newRow = $('<tr>');
         newRow.appendTo($('#resultTable'));
