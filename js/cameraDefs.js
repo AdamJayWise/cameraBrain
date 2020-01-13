@@ -49,7 +49,8 @@ var cameraDefs = {
         frameRateHzSlow: 0.03,
         darkCurrent : 0.019,
         displayName: 'Zyla 5.5 10-Tap',
-        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/zyla-5-5-scmos'
+        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/zyla-5-5-scmos',
+        imgFile : 'zyla.png',
     },
 
     'zyla4210tap' : {
@@ -74,7 +75,8 @@ var cameraDefs = {
         darkCurrent : 0.019,
         containerDivID : 'subContainer',
         displayName: 'Zyla 4.2+ 10-Tap',
-        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/zyla-4-2-scmos'
+        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/zyla-4-2-scmos',
+        imgFile : 'zyla.png',
     },
 
     'neo' : {
@@ -99,7 +101,8 @@ var cameraDefs = {
         darkCurrent : 0.007,
         containerDivID : 'subContainer',
         displayName: 'Neo 5.5',
-        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/neo-5-5-scmos'
+        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/neo-5-5-scmos',
+        imgFile : 'neo.png',
     },
 
 
@@ -127,6 +130,7 @@ var cameraDefs = {
             containerDivID : 'subContainer',
             displayName: 'Balor 17F-12',
             productLink : 'https://andor.oxinst.com/products/scmos-camera-series/balor-scmos',
+            imgFile : 'balor.png',
         },
 
     
@@ -152,6 +156,7 @@ var cameraDefs = {
         containerDivID : 'subContainer',
         displayName: 'Sona 4.2B-6 (CoaXPress)',
         productLink : 'https://andor.oxinst.com/products/scmos-camera-series/sona-scmos',
+        imgFile : 'sona.png'
     },
 
     'sona42b6usb' : {
@@ -176,6 +181,7 @@ var cameraDefs = {
         containerDivID : 'subContainer',
         displayName: 'Sona 4.2B-6 (USB3)',
         productLink : 'https://andor.oxinst.com/products/scmos-camera-series/sona-scmos',
+        imgFile : 'sona.png'
     },
 
     'sona42b11usb' : {
@@ -201,6 +207,7 @@ var cameraDefs = {
         containerDivID : 'subContainer',
         displayName: 'Sona 4.2B-11 (USB3)',
         productLink : 'https://andor.oxinst.com/products/scmos-camera-series/sona-scmos',
+        imgFile : 'sona.png',
     },
 
     'sona20b11usb' : {
@@ -226,6 +233,7 @@ var cameraDefs = {
         containerDivID : 'subContainer',
         displayName: 'Sona 2.0B-11 (USB3)',
         productLink : 'https://andor.oxinst.com/products/scmos-camera-series/sona-scmos',
+        imgFile : 'sona.png',
     },
 
     'idus420BEX2DD' : {
@@ -249,6 +257,7 @@ var cameraDefs = {
         containerDivID : 'subContainer',
         displayName : 'Idus 420 BEX2-DD',
         productLink : 'https://andor.oxinst.com/products/idus-spectroscopy-cameras/idus-420',
+        imgFile : 'idus420.png'
     },
 
     'iXon888bv' : {
@@ -274,6 +283,7 @@ var cameraDefs = {
         containerDivID : 'subContainer',
         displayName: 'iXon Ultra 888 BV',
         productLink : 'https://andor.oxinst.com/products/ixon-emccd-camera-series/ixon-ultra-888',
+        imgFile : 'ixonultra.png'
     },
 
     'iXonUltra897bv' : {
@@ -299,6 +309,7 @@ var cameraDefs = {
         containerDivID : 'subContainer',
         displayName: 'iXon Ultra 897 BV',
         productLink : 'https://andor.oxinst.com/products/ixon-emccd-camera-series/ixon-ultra-897',
+        imgFile : 'ixonultra.png'
     },
 
     'newton971bv' : {
@@ -323,6 +334,7 @@ var cameraDefs = {
         emGain : 1, 
         displayName: 'Newton 971 BV',
         productLink : 'https://andor.oxinst.com/products/newton-ccd-and-emccd-cameras/newton-971',
+        imgFile : 'newton971.png'
     },
 
     'newton970bv' : {
@@ -347,6 +359,7 @@ var cameraDefs = {
         emGain : 1, 
         displayName: 'Newton 970 BV',
         productLink : 'https://andor.oxinst.com/products/newton-ccd-and-emccd-cameras/newton-970',
+        imgFile : 'newton971.png'
     },
 
         'iKonM934-BEX2-DD' : {
@@ -371,6 +384,7 @@ var cameraDefs = {
            containerDivID : 'subContainer',
            displayName: 'iKon-M 934 BEX2-DD',
             productLink : 'https://andor.oxinst.com/products/ikon-xl-and-ikon-large-ccd-series/ikon-m-934',
+            imgFile : 'ikonm.png'
         },
 
         'iKonL936-BV' : {
@@ -395,6 +409,7 @@ var cameraDefs = {
            containerDivID : 'subContainer',
            displayName: 'iKon-L 936 BV',
             productLink : 'https://andor.oxinst.com/products/ikon-xl-and-ikon-large-ccd-series/ikon-l-936',
+            imgFile : 'ikonl.png',
         },
 
         'iKonXL231-BV' : {
@@ -419,6 +434,8 @@ var cameraDefs = {
            containerDivID : 'subContainer',
            displayName: 'iKon-XL 231 BV',
             productLink : 'https://andor.oxinst.com/products/ikon-xl-and-ikon-large-ccd-series/ikon-xl-231',
+            imgFile : 'ikonxl.png',
+
         }
 
 

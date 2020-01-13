@@ -68,14 +68,14 @@ createLikert('speed', 'Framerate', params, likertDiv);
 createLikert('spatialRes', 'Spatial Resolution', params, likertDiv);
 
 createLikert('peakQE', 'Overall Max QE', params, likertDiv);
-createLikert('QE300', 'Quantum Efficiency ~ 300nm', params, likertDiv);
-createLikert('QE550', 'Quantum Efficiency ~ 550nm', params, likertDiv);
-createLikert('QE800', 'Quantum Efficiency ~ 800nm', params, likertDiv);
-createLikert('QE1000', 'Quantum Efficiency ~ 1000nm', params, likertDiv);
+createLikert('QE300', 'QE ~ 300nm', params, likertDiv);
+createLikert('QE550', 'QE ~ 550nm', params, likertDiv);
+createLikert('QE800', 'QE ~ 800nm', params, likertDiv);
+createLikert('QE1000', 'QE ~ 1000nm', params, likertDiv);
 
 createLikert('lowDarkNoise', 'Low Dark Noise', params, likertDiv);
 createLikert('lowReadNoise', 'Low Read Noise', params, likertDiv);
-createLikert('squareness', 'Square Sensor for Imaging', params, likertDiv);
+createLikert('squareness', 'Square Sensor', params, likertDiv);
 createLikert('numPixels', 'Number of Pixels', params, likertDiv);
 createLikert('sensorArea', 'Sensor Size', params, likertDiv);
 
@@ -119,24 +119,38 @@ function drawTable(){
     $('table').remove();
 
     // draw a table to the #outputTable div
-    $('<table>').attr('id','resultTable').appendTo($('#outputTable'));
+    $('<table>').addClass("table table-striped").attr('id','resultTable').appendTo($('#outputTable'));
 
     // add column labels to the table
     var labelRow = $('<tr>');
     labelRow.appendTo($('#resultTable'));
-    labelRow.append($('<td>').text('Camera Name').css('text-align','center').css('font-weight','bold'));
+    labelRow.append($('<td>').text('').css('text-align','center').css('font-weight','bold'));
+    labelRow.append($('<td>').text('Product').css('text-align','center').css('font-weight','bold'));
     labelRow.append($('<td>').text('Score')).css('text-align','center').css('font-weight','bold');
-    labelRow.append($('<td>').text('More Info')).css('text-align','center').css('font-weight','bold');
+    labelRow.append($('<td>').text('')).css('text-align','center').css('font-weight','bold');
 
     camKeys.forEach(function(k){
         var newRow = $('<tr>');
         newRow.appendTo($('#resultTable'));
 
-        var mainTd = $('<td>').text(cameraDefs[k]['displayName']).appendTo(newRow);
+        // attach an image of the camera in question
+        var imTd = $('<td>');
+        imTd.appendTo(newRow);
+        if (cameraDefs[k]['imgFile']){
+            imTd.append($('<img>').prop('src',`img/${cameraDefs[k]['imgFile']}`).css('width','100px'));
+        }
+
+        // append row with full name of the camera
+        var mainTd = $('<td>').appendTo(newRow);
+        mainTd.append($('<p>').text(cameraDefs[k]['displayName']).addClass('cameraLabel'))
         
-        $('<td>').text(Math.round(100*camOrder[k])/100).appendTo(newRow);
+        // append a score for the camera based on the entered parameters - maybe hide this?
+        $('<td>').text(Math.round(100*camOrder[k])/100).css('text-align','center').appendTo(newRow);
+        
+        // append link for more info about that model
         var linkTd = $('<td>');
-        linkTd.appendTo(newRow)
+        linkTd.appendTo(newRow);
+        linkTd.css('text-align','center');
         $('<a>').text('More Info').prop('href', cameraDefs[k]['productLink']).appendTo(linkTd)
 
         if (sellingPoints[k]){
