@@ -129,9 +129,14 @@ function drawTable(){
     labelRow.append($('<td>').text('Score')).css('text-align','center').css('font-weight','bold');
     labelRow.append($('<td>').text('')).css('text-align','center').css('font-weight','bold');
 
+    var $tbody = $('<tbody>');
+    $tbody.appendTo($('#resultTable'));
+
     camKeys.forEach(function(k){
+
+
         var newRow = $('<tr>');
-        newRow.appendTo($('#resultTable'));
+        newRow.appendTo($tbody);
 
         // attach an image of the camera in question
         var imTd = $('<td>');

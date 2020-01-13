@@ -17,6 +17,7 @@ Newton 971 BV
 iKon-M 934 BEX2-DD
 iKon-XL 231 BV
 Neo sCMOS
+Marana 4.2B-11 BV
 
 to add:
 Zyla 4.2 USB
@@ -435,6 +436,31 @@ var cameraDefs = {
            displayName: 'iKon-XL 231 BV',
             productLink : 'https://andor.oxinst.com/products/ikon-xl-and-ikon-large-ccd-series/ikon-xl-231',
             imgFile : 'ikonxl.png',
+
+        },
+
+        'marana4211b-bv' : {
+            shortName : 'marana4211b-bv',
+            xPixels : 2048,
+            yPixels : 2048,
+            xPixelSize : 11,
+            yPixelSize : 11,
+            readNoise : 1.6,
+            readNoiseFast : 1.6,
+            readNoiseSlow : 1.6,
+            darkCurrent : 0.2,
+            QE : 0.95,
+            QE300 : 0.33,
+            QE550 : 0.95,
+            QE800 : 0.60,  
+            QE1000: 0.15,
+            CIC : 0,
+            frameRateHz : 48,
+            frameRateHzFast : 48,
+            frameRateHzSlow: 24 ,
+           displayName: 'Marana 4.2B-11 BV',
+            productLink : 'https://andor.oxinst.com/products/scmos-camera-series/marana-scmos',
+            imgFile : 'marana.png',
 
         }
 
