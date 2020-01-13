@@ -44,13 +44,13 @@ function createLikert(param, label, vector, targetSelection){
     newSelect.prop('id', param);
     newSelect.prop('class', 'likertSelect');
 
-    var choices = ['Not Important', 'Important', 'Very Important']
+    var choices = ['Not Important', 'Important', 'Very Important', 'Critical']
     
     choices.forEach(function(choice, n){
         $('<option>').prop('value', n).text(choice).appendTo(newSelect)
     })
 
-    var colorDict = {'0':'#d4d4d4', '1':'#d6b0b0', '2':'#d68383'};
+    var colorDict = {'0':'#d4d4d4', '1':'#d6b0b0', '2':'#d68383', '3':'#d16666'};
 
     newSelect.change(function(){
         console.log($(this).prop('value'));
@@ -66,10 +66,16 @@ likertDiv = $('#inputForm')
 
 createLikert('speed', 'Framerate', params, likertDiv);
 createLikert('spatialRes', 'Spatial Resolution', params, likertDiv);
+
 createLikert('peakQE', 'Overall Max QE', params, likertDiv);
+createLikert('QE300', 'Quantum Efficiency ~ 300nm', params, likertDiv);
+createLikert('QE550', 'Quantum Efficiency ~ 550nm', params, likertDiv);
+createLikert('QE800', 'Quantum Efficiency ~ 800nm', params, likertDiv);
+createLikert('QE1000', 'Quantum Efficiency ~ 1000nm', params, likertDiv);
+
 createLikert('lowDarkNoise', 'Low Dark Noise', params, likertDiv);
 createLikert('lowReadNoise', 'Low Read Noise', params, likertDiv);
-createLikert('squareness', 'Imaging (square) Sensor', params, likertDiv);
+createLikert('squareness', 'Square Sensor for Imaging', params, likertDiv);
 createLikert('numPixels', 'Number of Pixels', params, likertDiv);
 createLikert('sensorArea', 'Sensor Size', params, likertDiv);
 
@@ -135,7 +141,7 @@ function drawTable(){
 
         if (sellingPoints[k]){
             var sellPointKeys = Object.keys(sellingPoints[k]);
-            console.log(sellPointKeys)
+            //console.log(sellPointKeys)
 
             var sellPointScores = {};
             sellPointKeys.forEach(function(s){
@@ -143,8 +149,8 @@ function drawTable(){
             })
 
             sellPointKeys.sort(function(x,y){ return (sellPointScores[y]-sellPointScores[x]) });
-            console.log(sellPointScores);
-            console.log(sellPointKeys);
+            //console.log(sellPointScores);
+            //console.log(sellPointKeys);
 
             var sellingPointList = $('<ul>').appendTo(mainTd);
             for(var i = 0; i<3; i++){

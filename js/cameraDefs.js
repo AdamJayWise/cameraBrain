@@ -16,9 +16,15 @@ iXon Ultra 888 BV
 Newton 971 BV
 iKon-M 934 BEX2-DD
 iKon-XL 231 BV
+Neo sCMOS
 
 to add:
+Zyla 4.2 USB
+zyla 5.5 USB
+Marana (variants?)
 */
+
+
 
 
 
@@ -33,12 +39,15 @@ var cameraDefs = {
         readNoiseFast : 1.6,
         readNoiseSlow : 1.2,
         QE : 0.6,
+        QE300 : 0.05,
+        QE550 : 0.6,
+        QE800 : 0.3,  
+        QE1000: 0.05,
         CIC : 0,
         frameRateHz : 75,
         frameRateHzFast : 75,
         frameRateHzSlow: 0.03,
         darkCurrent : 0.019,
-        containerDivID : 'subContainer',
         displayName: 'Zyla 5.5 10-Tap',
         productLink : 'https://andor.oxinst.com/products/scmos-camera-series/zyla-5-5-scmos'
     },
@@ -54,6 +63,10 @@ var cameraDefs = {
         xPixelSize : 6.5,
         yPixelSize : 6.5,
         QE : 0.83,
+        QE300 : 0.07,
+        QE550 : 0.83,
+        QE800 : 0.48,  
+        QE1000: 0.06,
         CIC : 0,
         frameRateHz : 101,
         frameRateHzFast : 101,
@@ -75,6 +88,10 @@ var cameraDefs = {
         xPixelSize : 6.5,
         yPixelSize : 6.5,
         QE : 0.6,
+        QE300 : 0.05,
+        QE550 : 0.6,
+        QE800 : 0.3,  
+        QE1000: 0.05,
         CIC : 0,
         frameRateHz : 100,
         frameRateHzFast : 100,
@@ -97,6 +114,11 @@ var cameraDefs = {
             xPixelSize : 12,
             yPixelSize : 12,
             QE : 0.61,
+            QE300 : 0.05,
+            QE550 : 0.62,
+            QE800 : 0.42,  
+            QE1000: 0.06,
+            wellDepth : 80000,
             CIC : 0,
             frameRateHz : 54,
             frameRateHzFast : 54,
@@ -118,6 +140,10 @@ var cameraDefs = {
         readNoiseFast : 1.2,
         readNoiseSlow : 1.6,
         QE : 0.95,
+        QE300 : 0.33,
+        QE550 : 0.95,
+        QE800 : 0.60,  
+        QE1000: 0.18,
         CIC : 0,
         frameRateHz : 74,
         frameRateHzFast : 74,
@@ -136,19 +162,73 @@ var cameraDefs = {
         yPixelSize : 6.5,
         readNoise : 1.2,
         readNoiseFast : 1.2,
-        readNoiseSlow : 1.6,
+        readNoiseSlow : 1.2,
         QE : 0.95,
+        QE300 : 0.33,
+        QE550 : 0.95,
+        QE800 : 0.60,  
+        QE1000: 0.18,
         CIC : 0,
         frameRateHz : 43,
-        frameRateHzFast : 40,
-        frameRateHzSlow: 43,
+        frameRateHzFast : 43,
+        frameRateHzSlow: 40,
         darkCurrent : 0.1,
         containerDivID : 'subContainer',
         displayName: 'Sona 4.2B-6 (USB3)',
         productLink : 'https://andor.oxinst.com/products/scmos-camera-series/sona-scmos',
     },
 
-    'idus420' : {
+    'sona42b11usb' : {
+        shortName : 'Sona42b11usb',
+        xPixels : 2048,
+        yPixels : 2048,
+        xPixelSize : 11,
+        yPixelSize : 11,
+        readNoise : 1.6,
+        readNoiseFast : 1.6,
+        readNoiseSlow : 1.6,
+        QE : 0.95,
+        QE300 : 0.33,
+        QE550 : 0.95,
+        QE800 : 0.60,  
+        QE1000: 0.18,
+        CIC : 0,
+        frameRateHz : 48,
+        frameRateHzFast : 48,
+        frameRateHzSlow: 24,
+        darkCurrent : 0.3,
+        dynamicRange : 53000,
+        containerDivID : 'subContainer',
+        displayName: 'Sona 4.2B-11 (USB3)',
+        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/sona-scmos',
+    },
+
+    'sona20b11usb' : {
+        shortName : 'Sona20b11usb',
+        xPixels : 1400,
+        yPixels : 1400,
+        xPixelSize : 11,
+        yPixelSize : 11,
+        readNoise : 1.6,
+        readNoiseFast : 1.6,
+        readNoiseSlow : 1.6,
+        QE : 0.95,
+        QE300 : 0.33,
+        QE550 : 0.95,
+        QE800 : 0.60,  
+        QE1000: 0.18,
+        CIC : 0,
+        frameRateHz : 48,
+        frameRateHzFast : 48,
+        frameRateHzSlow: 24,
+        darkCurrent : 0.3,
+        dynamicRange : 53000,
+        containerDivID : 'subContainer',
+        displayName: 'Sona 2.0B-11 (USB3)',
+        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/sona-scmos',
+    },
+
+    'idus420BEX2DD' : {
         shortName : 'idus420',
         xPixels : 1024,
         yPixels : 255,
@@ -158,6 +238,10 @@ var cameraDefs = {
         readNoiseFast: 10,
         readNoiseSlow: 4,
         QE : 0.95,
+        QE300 : 0.20,
+        QE550 : 0.90,
+        QE800 : 0.95,  
+        QE1000: 0.33,
         frameRateHz : 0.34,
         frameRateHzFast: 0.34,
         frameRateHzSlow: 0.03,    
@@ -177,6 +261,10 @@ var cameraDefs = {
         readNoiseFast: 0.13,
         readNoiseSlow: 0.012,
         QE : 0.95,
+        QE300 : 0.12,
+        QE550 : 0.95,
+        QE800 : 0.70,  
+        QE1000: 0.10,
         CIC : 0.005,
         darkCurrent : 0.00011,
         frameRateHz : 26,
@@ -198,6 +286,10 @@ var cameraDefs = {
         readNoiseFast: 0.13,
         readNoiseSlow: 0.012,
         QE : 0.95,
+        QE300 : 0.12,
+        QE550 : 0.95,
+        QE800 : 0.70,  
+        QE1000: 0.10,
         CIC : 0.005,
         darkCurrent : 0.00011,
         frameRateHz : 56,
@@ -219,6 +311,10 @@ var cameraDefs = {
         readNoiseFast : 0.04,
         readNoiseSlow : 0.0028,
         QE : 0.95,
+        QE300 : 0.12,
+        QE550 : 0.95,
+        QE800 : 0.70,  
+        QE1000: 0.10,
         frameRateHz : 10,
         frameRateHzFast : 10,
         frameRateHzSlow: 0.03,
@@ -239,6 +335,10 @@ var cameraDefs = {
         readNoiseFast : 0.04,
         readNoiseSlow : 0.0028,
         QE : 0.95,
+        QE300 : 0.12,
+        QE550 : 0.95,
+        QE800 : 0.70,  
+        QE1000: 0.10,
         frameRateHz : 20,
         frameRateHzFast : 20,
         frameRateHzSlow: 0.06,
@@ -259,7 +359,11 @@ var cameraDefs = {
             readNoiseFast : 11.6,
             readNoiseSlow : 2.9,
             darkCurrent : 0.00012,
-            QE : 0.95,
+            QE : 0.93,
+            QE300 : 0.20,
+            QE550 : 0.90,
+            QE800 : 0.95,  
+            QE1000: 0.33,
             CIC : 0,
             frameRateHz : 2.6,
             frameRateHzFast : 2.6,
@@ -280,6 +384,10 @@ var cameraDefs = {
             readNoiseSlow : 2.9,
             darkCurrent : 0.000059,
             QE : 0.95,
+            QE300 : 0.12,
+            QE550 : 0.95,
+            QE800 : 0.70,  
+            QE1000: 0.10,
             CIC : 0,
             frameRateHz : 1,
             frameRateHzFast : 1,
@@ -300,6 +408,10 @@ var cameraDefs = {
             readNoiseSlow : 2.1,
             darkCurrent : 0.00013,
             QE : 0.95,
+            QE300 : 0.12,
+            QE550 : 0.95,
+            QE800 : 0.70,  
+            QE1000: 0.10,
             CIC : 0,
             frameRateHz : 0.5,
             frameRateHzFast : 0.5,
@@ -326,10 +438,10 @@ cameraKeys.forEach(function(key){
     cameraDefs[key]['peakQE'] = cameraDefs[key]['QE'];
 
     // Dark noise score, should revise this somehow
-    cameraDefs[key]['lowDarkNoise'] = 0.00011 / cameraDefs[key]['darkCurrent'];
+    cameraDefs[key]['lowDarkNoise'] = 0.00011 / cameraDefs[key]['darkCurrent'] / 1.8;
 
     // read noise score, should revise this somehow
-    cameraDefs[key]['lowReadNoise'] = 1 / Math.sqrt(cameraDefs[key]['readNoiseFast']);
+    cameraDefs[key]['lowReadNoise'] = (1 / cameraDefs[key]['readNoiseFast']) / 25;
 
     // squareness score, just the aspect ratio
     var x1 = cameraDefs[key]['yPixels'];
@@ -342,5 +454,6 @@ cameraKeys.forEach(function(key){
     // Sensor diagonal / size score
     var xSize = (cameraDefs[key]['xPixels'] * cameraDefs[key]['xPixelSize']);
     var ySize = (cameraDefs[key]['yPixels'] * cameraDefs[key]['yPixelSize']);
+    cameraDefs[key]['sensorDiagMm'] = Math.sqrt( (xSize/1000)**2 + (ySize/1000)**2)
     cameraDefs[key]['sensorArea'] = Math.sqrt( xSize**2 + ySize**2) / 87016.65	;
 })
