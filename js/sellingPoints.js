@@ -7,7 +7,6 @@ var sellingPoints = {
     // key selling points and relative importances against key parameters
     { 
         '82% Peak QE' : {'peakQE' : 1},
-        '6.5um pixels ideal for microscopy' : {'spatialRes' : 1},
 
     },
     
@@ -57,6 +56,10 @@ sp.cameraKeys.forEach(function(key){
     // create a selling point for n pixels
     var sp = `${Math.round( 10 * cameraDefs[key]['xPixels'] * cameraDefs[key]['yPixels'] / 10**6)/10} megapixel sensor`;
     sellingPoints[key][sp] = {'numPixels' : 1};
+
+    // create a selling point for pixel size
+    var sp = `${cameraDefs[key]['xPixelSize']} um pixels`;
+    sellingPoints[key][sp] = {'spatialRes' : 1};
 
     // create a selling point for QE
     var qeWavelenths = ['300', '550', '800', '1000']

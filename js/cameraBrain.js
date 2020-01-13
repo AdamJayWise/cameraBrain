@@ -44,7 +44,7 @@ function createLikert(param, label, vector, targetSelection){
     newSelect.prop('id', param);
     newSelect.prop('class', 'likertSelect');
 
-    var choices = ['Not Important', 'Important', 'Very Important', 'Critical']
+    var choices = ['Not Important', 'Important', 'Very Important', 'Critical'];
     
     choices.forEach(function(choice, n){
         $('<option>').prop('value', n).text(choice).appendTo(newSelect)
