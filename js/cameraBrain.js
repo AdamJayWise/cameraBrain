@@ -65,7 +65,7 @@ function createLikert(param, label, vector, targetSelection){
 likertDiv = $('#inputForm')
 
 createLikert('speed', 'Framerate', params, likertDiv);
-createLikert('spatialRes', 'Spatial Resolution', params, likertDiv);
+createLikert('spatialRes', 'Spatial Res.', params, likertDiv);
 
 createLikert('peakQE', 'Overall Max QE', params, likertDiv);
 createLikert('QE300', 'QE ~ 300nm', params, likertDiv);
