@@ -76,6 +76,7 @@ createLikert('QE1000', 'QE ~ 1000nm', params, likertDiv);
 createLikert('lowDarkNoise', 'Low Dark Noise', params, likertDiv);
 createLikert('lowReadNoise', 'Low Read Noise', params, likertDiv);
 createLikert('squareness', 'Square Sensor', params, likertDiv);
+createLikert('rectangularness', 'Wide Sensor', params, likertDiv);
 createLikert('numPixels', 'Number of Pixels', params, likertDiv);
 createLikert('sensorArea', 'Sensor Size', params, likertDiv);
 
@@ -142,7 +143,13 @@ function drawTable(){
         var imTd = $('<td>');
         imTd.appendTo(newRow);
         if (cameraDefs[k]['imgFile']){
-            imTd.append($('<img>').prop('src',`img/${cameraDefs[k]['imgFile']}`).css('width','100px'));
+            var $imDiv = $('<div>');
+            $imDiv.appendTo(imTd);
+            $imDiv.append($('<img>')
+                .prop('src',`img/${cameraDefs[k]['imgFile']}`)
+                .css('width','100px')
+                .css('margin-top','20px')
+                );
         }
 
         // append row with full name of the camera

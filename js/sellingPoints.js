@@ -64,7 +64,7 @@ sp.cameraKeys.forEach(function(key){
     // create a selling point for QE
     var qeWavelenths = ['300', '550', '800', '1000']
     qeWavelenths.forEach(function(l){
-        var sp = `~${ 100 * cameraDefs[key]['QE'+l]}% quantum efficiency @ ${l}nm`;
+        var sp = `~${ Math.round(100 * cameraDefs[key]['QE'+l])}% quantum efficiency @ ${l}nm`;
         var QEtag = 'QE'+l
         sellingPoints[key][sp] = {};
         sellingPoints[key][sp]['QE' + l] = 1;

@@ -243,8 +243,8 @@ var cameraDefs = {
         yPixels : 255,
         xPixelSize : 26,
         yPixelSize : 26,
-        readNoise : 10,
-        readNoiseFast: 10,
+        readNoise : 4,
+        readNoiseFast: 4,
         readNoiseSlow: 4,
         QE : 0.95,
         QE300 : 0.20,
@@ -257,6 +257,30 @@ var cameraDefs = {
         darkCurrent : 0.008,    
         containerDivID : 'subContainer',
         displayName : 'Idus 420 BEX2-DD',
+        productLink : 'https://andor.oxinst.com/products/idus-spectroscopy-cameras/idus-420',
+        imgFile : 'idus420.png'
+    },
+
+    'idus420BBU2' : {
+        shortName : 'idus420bu2',
+        xPixels : 1024,
+        yPixels : 255,
+        xPixelSize : 26,
+        yPixelSize : 26,
+        readNoise : 4,
+        readNoiseFast: 4,
+        readNoiseSlow: 4,
+        QE : 0.95,
+        QE300 : 0.60,
+        QE550 : 0.64,
+        QE800 : 0.54,  
+        QE1000: 0.10,
+        frameRateHz : 0.34,
+        frameRateHzFast: 0.34,
+        frameRateHzSlow: 0.03,    
+        darkCurrent : 0.002,    
+
+        displayName : 'Idus 420 BU2',
         productLink : 'https://andor.oxinst.com/products/idus-spectroscopy-cameras/idus-420',
         imgFile : 'idus420.png'
     },
@@ -490,6 +514,12 @@ cameraKeys.forEach(function(key){
     var x1 = cameraDefs[key]['yPixels'];
     var x2 = cameraDefs[key]['xPixels'];
     cameraDefs[key]['squareness'] =  Math.min(x1, x2) / Math.max(x1, x2);
+
+    // rectangularness score, just the inverse of aspect ratio
+    var x1 = cameraDefs[key]['yPixels'];
+    var x2 = cameraDefs[key]['xPixels'];
+    cameraDefs[key]['rectangularness'] =  Math.max(x1, x2) / Math.min(x1, x2) / 8;
+
 
     // number of pixels score
     cameraDefs[key]['numPixels'] = cameraDefs[key]['xPixels'] * cameraDefs[key]['yPixels'] / 16941312;
