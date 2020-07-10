@@ -4,24 +4,39 @@
 // e.g., UV (200-400), vis (400-700), NIR (700-1000)
 
 /*
+
+
 already added:
 
-Zyla 5.5 10 tap
-Zyla 4.2 10 tap
 Balor 17F-12
-Sona 4.2 coaxpress
-Sona 4.2 USB
-Idus 420 BEX2-DD
-iXon Ultra 888 BV
-Newton 971 BV
+iKon-L 936 BV
 iKon-M 934 BEX2-DD
 iKon-XL 231 BV
-Neo sCMOS
+iXon Ultra 888 BV
+iXon Ultra 897 BV
+iDus DU420 BEX2-DD
+iDus DU420 BR-DD
+iDus DU420 BU
+iDus DU420 BU2
+iDus DU420 BVF
+iDus DU420 OE
 Marana 4.2B-11 BV
+Neo 5.5
+Newton 970 BV
+Newton 971 BV
+Sona 2.0B-11 (USB3)
+Sona 4.2B-11 (USB3)
+Sona 4.2B-6 (CoaXPress)
+Sona 4.2B-6 (USB3)
+Zyla 4.2+ (10-Tap)
+Zyla 4.2+ (USB 3.0)
+Zyla 5.5 (10-Tap)
+Zyla 5.5 (USB 3.0)
 
 to add:
-Zyla 4.2 USB
-zyla 5.5 USB
+ixon 888 exf
+ixon 897 bv
+ixon 897 exf
 Marana (variants?)
 */
 
@@ -36,7 +51,7 @@ var cameraDefs = {
         yPixels : 2160,
         xPixelSize : 6.5,
         yPixelSize : 6.5,
-        readNoise : 1.6,
+        readNoise : 0.9,
         readNoiseFast : 1.6,
         readNoiseSlow : 1.2,
         QE : 0.6,
@@ -45,11 +60,34 @@ var cameraDefs = {
         QE800 : 0.3,  
         QE1000: 0.05,
         CIC : 0,
-        frameRateHz : 75,
-        frameRateHzFast : 75,
+        frameRateHz : 100,
+        frameRateHzFast : 100,
         frameRateHzSlow: 0.03,
         darkCurrent : 0.019,
-        displayName: 'Zyla 5.5 10-Tap',
+        displayName: 'Zyla 5.5 (10-Tap)',
+        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/zyla-5-5-scmos',
+        imgFile : 'zyla.png',
+    },
+
+    'zyla55usb' : {
+        shortName : 'zyla55usb',
+        xPixels : 2560,
+        yPixels : 2160,
+        xPixelSize : 6.5,
+        yPixelSize : 6.5,
+        readNoise : 0.9,
+        readNoiseFast : 1.6,
+        readNoiseSlow : 1.2,
+        QE : 0.6,
+        QE300 : 0.05,
+        QE550 : 0.6,
+        QE800 : 0.3,  
+        QE1000: 0.05,
+        CIC : 0,
+        frameRateHz : 40,
+        frameRateHzFast : 40,
+        darkCurrent : 0.019,
+        displayName: 'Zyla 5.5 (USB 3.0)',
         productLink : 'https://andor.oxinst.com/products/scmos-camera-series/zyla-5-5-scmos',
         imgFile : 'zyla.png',
     },
@@ -59,7 +97,7 @@ var cameraDefs = {
         hasRealImage : true,
         xPixels : 2048,
         yPixels : 2048,
-        readNoise : 1.3,
+        readNoise : 0.9,
         readNoiseFast : 1.3,
         readNoiseSlow : 1.1 ,
         xPixelSize : 6.5,
@@ -75,7 +113,31 @@ var cameraDefs = {
         frameRateHzSlow: 0.03,
         darkCurrent : 0.019,
         containerDivID : 'subContainer',
-        displayName: 'Zyla 4.2+ 10-Tap',
+        displayName: 'Zyla 4.2+ (10-Tap)',
+        productLink : 'https://andor.oxinst.com/products/scmos-camera-series/zyla-4-2-scmos',
+        imgFile : 'zyla.png',
+    },
+
+    'zyla42usb' : {
+        shortName : 'zyla42usb',
+        hasRealImage : true,
+        xPixels : 2048,
+        yPixels : 2048,
+        readNoise : 0.9,
+        readNoiseFast : 1.3,
+        readNoiseSlow : 1.1 ,
+        xPixelSize : 6.5,
+        yPixelSize : 6.5,
+        QE : 0.83,
+        QE300 : 0.07,
+        QE550 : 0.83,
+        QE800 : 0.48,  
+        QE1000: 0.06,
+        CIC : 0,
+        frameRateHz : 53,
+        darkCurrent : 0.019,
+        containerDivID : 'subContainer',
+        displayName: 'Zyla 4.2+ (USB 3.0)',
         productLink : 'https://andor.oxinst.com/products/scmos-camera-series/zyla-4-2-scmos',
         imgFile : 'zyla.png',
     },
@@ -237,6 +299,51 @@ var cameraDefs = {
         imgFile : 'sona.png',
     },
 
+    'idus420BVF' : {
+        shortName : 'idus420BVF',
+        xPixels : 1024,
+        yPixels : 255,
+        xPixelSize : 26,
+        yPixelSize : 26,
+        readNoise : 6,
+        QE : 0.97,
+        QE300 : 0.1,
+        QE550 : 0.95,
+        QE800 : 0.8,  
+        QE1000: 0.1,
+        frameRateHz : 0.34,
+        frameRateHzFast: 0.34,
+        frameRateHzSlow: 0.03,    
+        darkCurrent : 0.002,    
+        containerDivID : 'subContainer',
+        displayName : 'iDus DU420 BVF',
+        productLink : 'https://andor.oxinst.com/products/idus-spectroscopy-cameras/idus-420',
+        imgFile : 'idus420.png'
+    },
+
+    'idus420BU' : {
+        shortName : 'idus420BU',
+        xPixels : 1024,
+        yPixels : 255,
+        xPixelSize : 26,
+        yPixelSize : 26,
+        readNoise : 6,
+        QE : 0.94,
+        QE300 : 0.5,
+        QE550 : 0.85,
+        QE800 : 0.6,  
+        QE1000: 0.1,
+        frameRateHz : 0.34,
+        frameRateHzFast: 0.34,
+        frameRateHzSlow: 0.03,    
+        darkCurrent : 0.002,    
+        containerDivID : 'subContainer',
+        displayName : 'iDus DU420 BU',
+        productLink : 'https://andor.oxinst.com/products/idus-spectroscopy-cameras/idus-420',
+        imgFile : 'idus420.png'
+    },
+
+
     'idus420BEX2DD' : {
         shortName : 'idus420',
         xPixels : 1024,
@@ -256,12 +363,12 @@ var cameraDefs = {
         frameRateHzSlow: 0.03,    
         darkCurrent : 0.008,    
         containerDivID : 'subContainer',
-        displayName : 'Idus 420 BEX2-DD',
+        displayName : 'iDus DU420 BEX2-DD',
         productLink : 'https://andor.oxinst.com/products/idus-spectroscopy-cameras/idus-420',
         imgFile : 'idus420.png'
     },
 
-    'idus420BBU2' : {
+    'idus420BU2' : {
         shortName : 'idus420bu2',
         xPixels : 1024,
         yPixels : 255,
@@ -270,7 +377,7 @@ var cameraDefs = {
         readNoise : 4,
         readNoiseFast: 4,
         readNoiseSlow: 4,
-        QE : 0.95,
+        QE : 0.68,
         QE300 : 0.60,
         QE550 : 0.64,
         QE800 : 0.54,  
@@ -280,12 +387,52 @@ var cameraDefs = {
         frameRateHzSlow: 0.03,    
         darkCurrent : 0.002,    
 
-        displayName : 'Idus 420 BU2',
+        displayName : 'iDus DU420 BU2',
         productLink : 'https://andor.oxinst.com/products/idus-spectroscopy-cameras/idus-420',
         imgFile : 'idus420.png'
     },
 
-    'iXon888bv' : {
+    'idus420OE' : {
+        shortName : 'idus420oe',
+        xPixels : 1024,
+        yPixels : 255,
+        xPixelSize : 26,
+        yPixelSize : 26,
+        readNoise : 4,
+        QE : 0.58,
+        QE300 : 0.30,
+        QE550 : 0.43,
+        QE800 : 0.57,  
+        QE1000: 0.10,
+        frameRateHz : 0.34,   
+        darkCurrent : 0.0004,    
+
+        displayName : 'iDus DU420 OE',
+        productLink : 'https://andor.oxinst.com/products/idus-spectroscopy-cameras/idus-420',
+        imgFile : 'idus420.png'
+    },
+
+    'idus420BRDD' : {
+        shortName : 'idus420BRDD',
+        xPixels : 1024,
+        yPixels : 255,
+        xPixelSize : 26,
+        yPixelSize : 26,
+        readNoise : 4,
+        QE : 0.95,
+        QE300 : 0.25,
+        QE550 : 0.70,
+        QE800 : 0.95,  
+        QE1000: 0.33,
+        frameRateHz : 0.34,   
+        darkCurrent : 0.008,    
+
+        displayName : 'iDus DU420 BR-DD',
+        productLink : 'https://andor.oxinst.com/products/idus-spectroscopy-cameras/idus-420',
+        imgFile : 'idus420.png'
+    },
+
+    'iXonUltra888bv' : {
         shortName : 'iXonUltra888',
         xPixels : 1024,
         yPixels : 1024,
@@ -486,8 +633,78 @@ var cameraDefs = {
             productLink : 'https://andor.oxinst.com/products/scmos-camera-series/marana-scmos',
             imgFile : 'marana.png',
 
-        }
+        },
 
+
+        'DH340T-18U-E3' : {
+            shortName : 'DH340T-18U-E3',
+            xPixels : 2048,
+            yPixels : 512,
+            xPixelSize : 13.5,
+            yPixelSize : 13.5,
+
+            intensified : true, 
+            intensifierRes : 25, //intensifier resolution in um
+            intensifierAperture : 18, // intensifier size in mm
+            minGateWidth : 2, //minimum optical gate width in ns
+            maxRelGain : 300, // max relative gain, unitless
+            spectralRateFVB : 135,
+            spectralRateCrop : 1825,
+            spectralRateKinetic26um : 30030,
+
+            readNoise : 1.6,
+            readNoiseFast : 6,
+            readNoiseSlow : 6,
+            darkCurrent : 0.04,
+            QE : 0.22,
+            QE300 : 0.22,
+            QE550 : 0.08,
+            QE800 : 0.02,  
+            QE1000: 0.0,
+            CIC : 0,
+            frameRateHz : 2.5,
+            frameRateHzFast : 2.5,
+            frameRateHzSlow: 2.5 ,
+           displayName: 'iStar CCD DH340T-18U-E3',
+            productLink : 'https://andor.oxinst.com/products/istar-intensified-cameras?gclid=Cj0KCQjwo6D4BRDgARIsAA6uN1-NEMjrGPn0GpQCaltsyUKm7kXuiZc355dmsOhqAoghzX0aDAaMgTEaAgZ-EALw_wcB',
+            imgFile : 'istarCCD.png',
+
+        },
+
+        'DH340T-25F-03' : {
+            shortName : 'DH340T-25F-03',
+            xPixels : 2048,
+            yPixels : 512,
+            xPixelSize : 13.5,
+            yPixelSize : 13.5,
+
+            intensified : true, 
+            intensifierRes : 25, //intensifier resolution in um
+            intensifierAperture : 25, // intensifier size in mm
+            minGateWidth : 7, //minimum optical gate width in ns
+            maxRelGain : 1000, // max relative gain, unitless
+            spectralRateFVB : 135,
+            spectralRateCrop : 1825,
+            spectralRateKinetic26um : 30030,
+
+            readNoise : 1.6,
+            readNoiseFast : 6,
+            readNoiseSlow : 6,
+            darkCurrent : 0.04,
+            QE : 0.17,
+            QE300 : 0.13,
+            QE550 : 0.10,
+            QE800 : 0.02,  
+            QE1000: 0.0,
+            CIC : 0,
+            frameRateHz : 2.5,
+            frameRateHzFast : 2.5,
+            frameRateHzSlow: 2.5 ,
+           displayName: 'iStar CCD DH340T-25F-03',
+            productLink : 'https://andor.oxinst.com/products/istar-intensified-cameras?gclid=Cj0KCQjwo6D4BRDgARIsAA6uN1-NEMjrGPn0GpQCaltsyUKm7kXuiZc355dmsOhqAoghzX0aDAaMgTEaAgZ-EALw_wcB',
+            imgFile : 'istarCCD.png',
+
+        }
 
 }
 
@@ -495,8 +712,11 @@ var cameraKeys = Object.keys(cameraDefs);
 
 cameraKeys.forEach(function(key){
 
+    // intensified camera gate width
+    cameraDefs[key]['maxGateSpeed'] = 1 / cameraDefs[key]['minGateWidth'] / (1/2);
+
     // generic camera "speed" - just using the fastest framerate / 100
-    cameraDefs[key]['speed'] = cameraDefs[key]['frameRateHzFast']/100;
+    cameraDefs[key]['speed'] = cameraDefs[key]['frameRateHz']/100;
 
     // Spatial resolution, just using inverse of pixel size.  range is [6/26,1]
     cameraDefs[key]['spatialRes'] = 6.5/cameraDefs[key]['xPixelSize'];
@@ -508,7 +728,7 @@ cameraKeys.forEach(function(key){
     cameraDefs[key]['lowDarkNoise'] = 0.00011 / cameraDefs[key]['darkCurrent'] / 1.8;
 
     // read noise score, should revise this somehow
-    cameraDefs[key]['lowReadNoise'] = (1 / cameraDefs[key]['readNoiseFast']) / 25;
+    cameraDefs[key]['lowReadNoise'] = (1 / cameraDefs[key]['readNoise']) / 25;
 
     // squareness score, just the aspect ratio
     var x1 = cameraDefs[key]['yPixels'];
@@ -530,3 +750,8 @@ cameraKeys.forEach(function(key){
     cameraDefs[key]['sensorDiagMm'] = Math.sqrt( (xSize/1000)**2 + (ySize/1000)**2)
     cameraDefs[key]['sensorArea'] = Math.sqrt( xSize**2 + ySize**2) / 87016.65	;
 })
+
+var haveThese = '';
+Object.keys(cameraDefs).sort().forEach(function(e){haveThese = haveThese + (cameraDefs[e]['displayName'] + '\n')});
+console.log(haveThese)
+

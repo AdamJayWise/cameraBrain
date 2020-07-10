@@ -30,7 +30,7 @@ sp.cameraKeys.forEach(function(key){
     }
     
     // create a selling point for camera frame rate
-    var speedSp = `Up to ${cameraDefs[key]['frameRateHzFast']} FPS`;
+    var speedSp = `Up to ${cameraDefs[key]['frameRateHzFast']} frames per second, full frame`;
     sellingPoints[key][speedSp] = {'speed' : 1};
 
     // create a selling point for camera diagonal size
@@ -61,14 +61,25 @@ sp.cameraKeys.forEach(function(key){
     var sp = `${cameraDefs[key]['xPixelSize']} um pixels`;
     sellingPoints[key][sp] = {'spatialRes' : 1};
 
-    // create a selling point for QE
+    // create a selling point for specific QE at some wavelength
     var qeWavelenths = ['300', '550', '800', '1000']
     qeWavelenths.forEach(function(l){
         var sp = `~${ Math.round(100 * cameraDefs[key]['QE'+l])}% quantum efficiency @ ${l}nm`;
         var QEtag = 'QE'+l
         sellingPoints[key][sp] = {};
         sellingPoints[key][sp]['QE' + l] = 1;
-    })
+    });
+
+    // create a selling point for peak qe
+    var sp = `${cameraDefs[key]['peakQE']*100}% Peak Quantum Efficiency`;
+    sellingPoints[key][sp] = {'peakQE' : 1};
+
+    // intensified camera selling points
+
+    // create a selling point for intensifier gate width
+    var sp = `${cameraDefs[key]['minGateWidth']} ns Minimum Gate Width`;
+    sellingPoints[key][sp] = {'maxGateSpeed' : 1};
+    
 
     
 })

@@ -28,7 +28,7 @@ shortnames to pictures
 
 //function to make likert scale inputs
 
-function createLikert(param, label, vector, targetSelection){
+function createLikert(param, label, vector, targetSelection, boolean = false){
     // create a likert pull-down appended to targetElement, which updates the property 
     // 'label' of the object 'vector'
 
@@ -38,31 +38,68 @@ function createLikert(param, label, vector, targetSelection){
     var selectDiv = $('<div>');
     selectDiv.prop('class', 'likertDiv')
     selectDiv.appendTo(targetSelection);
-    selectDiv.text(label);
+
+    var toolTipDiv = $('<span>')
+    toolTipDiv.text('?')
+    toolTipDiv.prop('class','toolTip')
+    toolTipDiv.appendTo(selectDiv);
+    
+    var labelDiv = $('<div>');
+    labelDiv.appendTo(selectDiv)
+    labelDiv.text(label);
+    labelDiv.addClass('labelDiv')
+
 
     var newSelect = $('<select>');
     newSelect.prop('id', param);
     newSelect.prop('class', 'likertSelect');
 
-    var choices = ['Not Important', 'Important', 'Very Important', 'Critical'];
+    // if this likert scale has multiple values, do this:
+    if (boolean == false){
+
+        var choices = ['Not Important', 'Important', 'Very Important', 'Critical'];
+        
+        choices.forEach(function(choice, n){
+            $('<option>').prop('value', n).text(choice).appendTo(newSelect)
+        })
+
+        var colorDict = {'0':'#d4d4d4', '1':'#d6b0b0', '2':'#d68383', '3':'#d16666'};
+
+        newSelect.change(function(){
+            console.log($(this).prop('value'));
+            vector[param] = Number($(this).prop('value'));
+            console.log(vector)
+            $(this).css('background-color', colorDict[$(this).prop('value')]);
+            drawTable();
+        })
+
+    }
+
+        // if this likert scale is binary:
+        if (boolean == true){
+
+            var choices = ['Not Required', 'Required'];
+            
+            choices.forEach(function(choice, n){
+                $('<option>').prop('value', n).text(choice).appendTo(newSelect)
+            })
     
-    choices.forEach(function(choice, n){
-        $('<option>').prop('value', n).text(choice).appendTo(newSelect)
-    })
+            var colorDict = {'0':'#d4d4d4', '1':'#d16666'};
+    
+            newSelect.change(function(){
+                console.log($(this).prop('value'));
+                vector[param] = Number($(this).prop('value'));
+                console.log(vector)
+                $(this).css('background-color', colorDict[$(this).prop('value')]);
+                drawTable();
+            })
+    
+        }
 
-    var colorDict = {'0':'#d4d4d4', '1':'#d6b0b0', '2':'#d68383', '3':'#d16666'};
-
-    newSelect.change(function(){
-        console.log($(this).prop('value'));
-        vector[param] = Number($(this).prop('value'));
-        console.log(vector)
-        $(this).css('background-color', colorDict[$(this).prop('value')]);
-        drawTable();
-    })
     newSelect.appendTo(selectDiv)
 }
 
-likertDiv = $('#inputForm')
+likertDiv = $('#generalInput')
 
 createLikert('speed', 'Framerate', params, likertDiv);
 createLikert('spatialRes', 'Spatial Res.', params, likertDiv);
@@ -79,6 +116,11 @@ createLikert('squareness', 'Square Sensor', params, likertDiv);
 createLikert('rectangularness', 'Wide Sensor', params, likertDiv);
 createLikert('numPixels', 'Number of Pixels', params, likertDiv);
 createLikert('sensorArea', 'Sensor Size', params, likertDiv);
+
+likertDiv = $('#iCamInput')
+createLikert('intensified', 'Intensified Camera', params, likertDiv, boolean = true);
+createLikert('maxGateSpeed', 'Gate Width', params, likertDiv);
+
 
 
 function dotProduct(obj1, obj2){
@@ -108,8 +150,25 @@ function drawTable(){
     camKeys.forEach(function(key){
         var dotProd = 0;
         Object.keys(params).forEach(function(k){
-            dotProd += cameraDefs[key][k] * params[k];
+            // handled boolean or required parameters
+            // e.g., if I require a parameter and camera doesn't have it, throw out the dot product
+            if ( (!cameraDefs[key][k]) & (params[k]==0) ){
+                return
+            }
+
+            dotProd += Number(cameraDefs[key][k]) * Number(params[k]);
+            //report errors if any
+            if (isNaN(Number(cameraDefs[key][k]))){
+                console.log(key,k,params[k],k)
+            }
+
         })
+
+        // if dotprod is nan, change it to zero to avoid killing sorting
+        if (isNaN(dotProd)){
+            dotProd = 0;
+        }
+
         //console.log(key, dotProd)
         camOrder[key] = dotProd;
     })
