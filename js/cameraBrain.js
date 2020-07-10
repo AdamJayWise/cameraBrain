@@ -195,7 +195,7 @@ function drawTable(){
     labelRow.appendTo($('#resultTable'));
     labelRow.append($('<td>').text('').css('text-align','center').css('font-weight','bold'));
     labelRow.append($('<td>').text('Product').css('text-align','center').css('font-weight','bold'));
-    labelRow.append($('<td>').text('Score')).css('text-align','center').css('font-weight','bold');
+    labelRow.append($('<td>').text('Suitability')).css('text-align','center').css('font-weight','bold');
     labelRow.append($('<td>').text('')).css('text-align','center').css('font-weight','bold');
 
     var $tbody = $('<tbody>');
@@ -229,7 +229,16 @@ function drawTable(){
         mainTd.append($('<p>').text(cameraDefs[k]['displayName']).addClass('cameraLabel'))
         
         // append a score for the camera based on the entered parameters - maybe hide this?
-        $('<td>').text(Math.round(100*camOrder[k])/100).css('text-align','center').appendTo(newRow);
+        //$('<td>').text(Math.round(100*camOrder[k])/100).css('text-align','center').appendTo(newRow);
+
+        // calculate how many stars to rate this:
+        var maxScore = Math.max(...Object.values(camOrder));
+        var myScore = Math.round(4 * camOrder[k] / (maxScore + 0.0001));
+        var scoreString = [];
+        scoreString.length = myScore;
+        scoreString.fill('&starf;')
+        scoreString = scoreString.join('')
+        $('<td>').html(scoreString).css('text-align','center').appendTo(newRow);
         
         // append link for more info about that model
         var linkTd = $('<td>');
