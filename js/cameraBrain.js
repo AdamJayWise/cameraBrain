@@ -159,8 +159,9 @@ function drawTable(){
         var dotProd = 0;
         Object.keys(params).forEach(function(k){
             // handled boolean or required parameters
-            // e.g., if I require a parameter and camera doesn't have it, throw out the dot product
-            if ( (!cameraDefs[key][k]) & (params[k]==0) ){
+            // if there isn't an entry but the parameter weight is 0, ignore
+            // ie, if cameraDefs[key][k] is undefined
+            if ( isNaN(Number(cameraDefs[key][k])) && (params[k]==0) ){
                 return
             }
 
