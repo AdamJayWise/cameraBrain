@@ -74,11 +74,20 @@ sp.cameraKeys.forEach(function(key){
     var sp = `${cameraDefs[key]['peakQE']*100}% Peak Quantum Efficiency`;
     sellingPoints[key][sp] = {'peakQE' : 1};
 
-    // intensified camera selling points
+    //  ============= intensified camera selling points ===============
 
     // create a selling point for intensifier gate width
     var sp = `${cameraDefs[key]['minGateWidth']} ns Minimum Gate Width`;
     sellingPoints[key][sp] = {'maxGateSpeed' : 1};
+
+    // ============== HED Camera Selling Points ======================
+    // create a selling point for specific QE at some energies
+    var energies = ['10', '100', '1000', '4000', '10000']
+    energies.forEach(function(l){
+        var sp = `~${ Math.round(100 * cameraDefs[key]['QE'+l+'eV'])}% quantum efficiency @ ${l}eV`;
+        sellingPoints[key][sp] = {};
+        sellingPoints[key][sp]['QE' + l + 'eV'] = 1;
+    });
     
 
     

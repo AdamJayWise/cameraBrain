@@ -33,6 +33,11 @@ Zyla 4.2+ (USB 3.0)
 Zyla 5.5 (10-Tap)
 Zyla 5.5 (USB 3.0)
 
+
+DH340T-18U-E3
+DH340T-25F-03
+
+
 to add:
 ixon 888 exf
 ixon 897 bv
@@ -703,6 +708,44 @@ var cameraDefs = {
            displayName: 'iStar CCD DH340T-25F-03',
             productLink : 'https://andor.oxinst.com/products/istar-intensified-cameras?gclid=Cj0KCQjwo6D4BRDgARIsAA6uN1-NEMjrGPn0GpQCaltsyUKm7kXuiZc355dmsOhqAoghzX0aDAaMgTEaAgZ-EALw_wcB',
             imgFile : 'istarCCD.png',
+
+        },
+
+
+        // ====================== HIGH ENERGY CAMERAS =================== //
+
+        'DO920P-BEN' : {
+            shortName : 'DO920P-BEN',
+            xPixels : 1024,
+            yPixels : 255,
+            xPixelSize : 26,
+            yPixelSize : 266,
+
+            readNoise : 4,
+            readNoiseFast : 20,
+            readNoiseSlow : 4,
+            darkCurrent : 0.0003,
+            
+            hed : true,
+            QE10eV : 0.27,
+            QE100eV : 0.93,
+            QE1000eV : 0.97,
+            QE4000eV : 0.80,
+            QE10000eV : 0.1,
+
+
+            QE : 0.95,
+            QE300 : 0.18, //4.13 eV
+            QE550 : 0.20, //2.25 eV
+            QE800 : 0.55, //1.54 eV  
+            QE1000: 0.35, //1.24 eV
+            CIC : 0,
+            frameRateHz : 2.5,
+            frameRateHzFast : 2.5,
+            frameRateHzSlow: 2.5 ,
+           displayName: 'Newton SO DO920P-BEN',
+            productLink : 'https://andor.oxinst.com/assets/uploads/products/andor/documents/andor-newton-so-specifications.pdf',
+            imgFile : 'newtonSO.png',
 
         }
 

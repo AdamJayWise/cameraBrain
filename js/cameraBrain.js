@@ -121,6 +121,14 @@ likertDiv = $('#iCamInput')
 createLikert('intensified', 'Intensified Camera', params, likertDiv, boolean = true);
 createLikert('maxGateSpeed', 'Gate Width', params, likertDiv);
 
+likertDiv = $('#hedInput');
+createLikert('QE10eV', 'QE ~ 10eV', params, likertDiv);
+createLikert('QE100eV', 'QE ~ 100eV', params, likertDiv);
+createLikert('QE1000eV', 'QE ~ 1000eV', params, likertDiv);
+createLikert('QE4000eV', 'QE ~ 4000eV', params, likertDiv);
+createLikert('QE10000eV', 'QE ~ 10000eV', params, likertDiv);
+
+
 
 
 function dotProduct(obj1, obj2){
@@ -193,6 +201,10 @@ function drawTable(){
     $tbody.appendTo($('#resultTable'));
 
     camKeys.forEach(function(k){
+
+        if ( (Math.max(...Object.values(camOrder)) > 0) & (camOrder[k]==0)){
+            return
+        }
 
 
         var newRow = $('<tr>');
