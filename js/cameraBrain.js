@@ -135,7 +135,7 @@ createLikert('QE10000eV', 'QE ~ 10000eV', params, likertDiv);
 var sellPointSelect = $('<select>').attr('class','configSelect');
 
 [3,4,5,6,7].forEach(function(choice, n){
-    $('<option>').prop('value', Number(choice)).text(`Show ${choice} Key Points`).appendTo(sellPointSelect)
+    $('<option>').prop('value', Number(choice)).text(`Show ${choice} Key Points Per Camera`).appendTo(sellPointSelect)
 })
 
 sellPointSelect.change(function(){
