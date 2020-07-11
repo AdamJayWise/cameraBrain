@@ -33,6 +33,18 @@
             display: inline-block;
         }
 
+        .infoNote {
+            display : none;
+            padding : 5px;
+            border: 1px solid black; 
+            
+        }
+
+        .configSelect {
+            margin : 10px;
+            width : 99%;
+        }
+
         .inputCategoryLabel {
             background-color : lightblue;
             text-align : center;
@@ -93,6 +105,7 @@
 
 
 
+
         
 
 
@@ -113,14 +126,14 @@
             </button>
             </div>
 
-            <p class = "bigTitle">Camera Concierge</p>
+            <p class = "bigTitle">Camera Wizard</p>
         </div>
     </div>
 
     <div class = "row">
         <div class = "col-4" id = "inputForm">
             <p class = 'subLabel'>Performance Priorities</p>
-            <p>Select which camera performance parameters are important to this application</p>
+            <p class = 'infoNote'>Select which camera performance parameters are important to this application</p>
 
             <div class = "inputCategory" id = "generalInput">
                 <div class = "inputCategoryLabel">General</div>

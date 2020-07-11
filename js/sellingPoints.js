@@ -38,7 +38,7 @@ sp.cameraKeys.forEach(function(key){
     sellingPoints[key][diagSp] = {'sensorArea' : 1};
 
     // create a selling point for minimum dark current
-    var sp = `Dark Current as Low as ${cameraDefs[key]['darkCurrent']} electrons/pixel/second`;
+    var sp = `Dark Current as Low as ${cameraDefs[key]['darkCurrent']} e<sup>-</sup>/pixel/second`;
     sellingPoints[key][sp] = {'lowDarkNoise' : 1};
 
     // create a selling point for low dark noise
@@ -49,7 +49,7 @@ sp.cameraKeys.forEach(function(key){
     }
     // else give the read noise
     if (!cameraDefs[key]['emGain']){
-        var sp = `Read noise as low as ${cameraDefs[key]['readNoiseSlow']} electrons`;
+        var sp = `Read noise as low as ${cameraDefs[key]['readNoiseSlow']} e<sup>-</sup>`;
         sellingPoints[key][sp] = {'lowReadNoise' : 1};
     }
 

@@ -2,6 +2,9 @@ console.log('cameraBrain.js Adam Wise 1-7-2019')
 
 params = {};
 
+// configuration
+app = {'numSellingPoints' : 3};
+
 /* 
 I want to create a likert scale data entry form on the top, and use that information to create an ordered list of products
 at the bottom of the display
@@ -101,8 +104,8 @@ function createLikert(param, label, vector, targetSelection, boolean = false){
 
 likertDiv = $('#generalInput')
 
-createLikert('speed', 'Framerate', params, likertDiv);
-createLikert('spatialRes', 'Spatial Res.', params, likertDiv);
+createLikert('speed', 'Max . Framerate', params, likertDiv);
+createLikert('spatialRes', 'Spatial Resolution', params, likertDiv);
 
 createLikert('peakQE', 'Overall Max QE', params, likertDiv);
 createLikert('QE300', 'QE ~ 300nm', params, likertDiv);
@@ -128,6 +131,20 @@ createLikert('QE1000eV', 'QE ~ 1000eV', params, likertDiv);
 createLikert('QE4000eV', 'QE ~ 4000eV', params, likertDiv);
 createLikert('QE10000eV', 'QE ~ 10000eV', params, likertDiv);
 
+// add a pull down for how many selling points to show
+var sellPointSelect = $('<select>').attr('class','configSelect');
+
+[3,4,5,6,7].forEach(function(choice, n){
+    $('<option>').prop('value', Number(choice)).text(`Show ${choice} Key Points`).appendTo(sellPointSelect)
+})
+
+sellPointSelect.change(function(){
+    app['numSellingPoints'] = Number($(this).prop('value'));
+    console.log('ding')
+    drawTable();
+})
+
+sellPointSelect.appendTo($('#inputForm'))
 
 
 
@@ -260,8 +277,8 @@ function drawTable(){
             //console.log(sellPointKeys);
 
             var sellingPointList = $('<ul>').appendTo(mainTd);
-            for(var i = 0; i<3; i++){
-                sellingPointList.append($('<li>').text(sellPointKeys[i]))
+            for(var i = 0; i < app['numSellingPoints']; i++){
+                sellingPointList.append($('<li>').html(sellPointKeys[i]))
             }
 
         }
