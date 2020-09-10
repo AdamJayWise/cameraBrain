@@ -29,6 +29,10 @@
             position:relative;
         }
 
+        .likertSelect {
+            width : 114px;
+        }
+
         .labelDiv{
             display: inline-block;
         }
@@ -51,18 +55,6 @@
             font-weight : bold;
         }
 
-        .toolTip {
-
-            display : none;
-            opacity : 1;
-            border: 1px solid black;
-            margin : 5px;
-            padding : 0px;
-            border-radius : 10px;
-            width : 15px;
-            height : 15px;
-        }
-
         .bigTitle {
             font-size : 28;
             font-weight : bold;
@@ -77,7 +69,7 @@
 
         select {
             background-color : #dbdbdb;
-            margin : 0 0 0 22px;
+            margin : 0 0 0 10px;
             font-weight : 600;
             font-size : 10pt;
         }
@@ -103,6 +95,23 @@
             overflow-y: scroll;
         }
 
+        .tipButton {
+                display : inline-block;
+                position : relative;
+                top : 0px;
+                left : 4px;
+                background-color : rgb(48, 58, 136);
+                border-radius : 12.5px;
+                border : 1px solid white;
+                width : 18px;
+                height : 18px;
+                text-align : center;
+                line-height : 18px;
+                color : white;
+                font-size : 17px;
+                margin : -5px 0 0 0;
+                box-shadow : 1px 1px gray;
+            }
 
 
 
@@ -136,7 +145,7 @@
             <p class = 'infoNote'>Select which camera performance parameters are important to this application</p>
 
             <div class = "inputCategory" id = "generalInput">
-                <div class = "inputCategoryLabel">General</div>
+                <div class = "inputCategoryLabel">Sensor, General</div>
             </div>
 
             <div class = "inputCategory" id = "iCamInput">
@@ -158,6 +167,8 @@
 <script src = "js/bootstrap.bundle.min.js"></script>
 <script src = "js/cameraDefs.js"></script>
 <script src = "js/sellingPoints.js"></script>
+<script src = 'js/tooltips.js'></script>
 <script src = 'js/cameraBrain.js'></script>
+
 
 </html>

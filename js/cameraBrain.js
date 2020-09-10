@@ -6,6 +6,13 @@ params = {};
 app = {'numSellingPoints' : 3};
 
 /* 
+
+So what to show before the next presentation
+How to present this?
+What features / tweaks to add?
+    - maybe an info button for each?
+    - decouple as much as possible from main js
+
 I want to create a likert scale data entry form on the top, and use that information to create an ordered list of products
 at the bottom of the display
 
@@ -41,16 +48,14 @@ function createLikert(param, label, vector, targetSelection, boolean = false){
     var selectDiv = $('<div>');
     selectDiv.prop('class', 'likertDiv')
     selectDiv.appendTo(targetSelection);
-
-    var toolTipDiv = $('<span>')
-    toolTipDiv.text('?')
-    toolTipDiv.prop('class','toolTip')
-    toolTipDiv.appendTo(selectDiv);
     
     var labelDiv = $('<div>');
     labelDiv.appendTo(selectDiv)
     labelDiv.text(label);
     labelDiv.addClass('labelDiv')
+
+    labelDiv.attr('data-toggle','tooltip').attr('title', tooltips[param])
+    labelDiv.tooltip();
 
 
     var newSelect = $('<select>');
@@ -60,7 +65,7 @@ function createLikert(param, label, vector, targetSelection, boolean = false){
     // if this likert scale has multiple values, do this:
     if (boolean == false){
 
-        var choices = ['Not Important', 'Important', 'Very Important', 'Critical'];
+        var choices = [' - ', 'Important', 'Very Important', 'Critical'];
         
         choices.forEach(function(choice, n){
             $('<option>').prop('value', n).text(choice).appendTo(newSelect)
@@ -107,7 +112,7 @@ likertDiv = $('#generalInput')
 createLikert('speed', 'Max . Framerate', params, likertDiv);
 createLikert('spatialRes', 'Spatial Resolution', params, likertDiv);
 
-createLikert('peakQE', 'Overall Max QE', params, likertDiv);
+createLikert('peakQE', 'Peak QE', params, likertDiv);
 createLikert('QE300', 'QE ~ 300nm', params, likertDiv);
 createLikert('QE550', 'QE ~ 550nm', params, likertDiv);
 createLikert('QE800', 'QE ~ 800nm', params, likertDiv);
@@ -118,13 +123,16 @@ createLikert('lowReadNoise', 'Low Read Noise', params, likertDiv);
 createLikert('squareness', 'Square Sensor', params, likertDiv);
 createLikert('rectangularness', 'Wide Sensor', params, likertDiv);
 createLikert('numPixels', 'Number of Pixels', params, likertDiv);
-createLikert('sensorArea', 'Sensor Size', params, likertDiv);
+createLikert('sensorArea', 'Size, Diagonal', params, likertDiv);
 
 likertDiv = $('#iCamInput')
 createLikert('intensified', 'Intensified Camera', params, likertDiv, boolean = true);
 createLikert('maxGateSpeed', 'Gate Width', params, likertDiv);
 
 likertDiv = $('#hedInput');
+createLikert('hed', 'HED Sensor', params, likertDiv, boolean = true);
+createLikert('vacuumFlange', 'Vacuum Flange Mounted', params, likertDiv, boolean = true);
+createLikert('BeWindow', 'Beryllium Window', params, likertDiv, boolean = true);
 createLikert('QE10eV', 'QE ~ 10eV', params, likertDiv);
 createLikert('QE100eV', 'QE ~ 100eV', params, likertDiv);
 createLikert('QE1000eV', 'QE ~ 1000eV', params, likertDiv);
