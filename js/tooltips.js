@@ -11,7 +11,7 @@ var tooltips = {
     'squareness' : 'Preference cameras with square sensors.  Square sensors are generally better for imaging applications, while narrow rectangular sensors are preferable for spectroscopy applications.',
     'rectangularness' : 'Preference cameras with narrow rectangular sensors. Square sensors are generally better for imaging applications, while narrow rectangular sensors are preferable for spectroscopy applications.',
     'numPixels' : 'Preference cameras with large numbers of pixels in the active area.  More pixels means, all else being equal, means more data can be captured in a single acquisition.',
-    'sensorArea' : 'Preference cameras with physically large sensors.  All else being equal, a larger sensor can capture a wider field of view e.g. in a microscope or telescope.',
+    'sensorAreamm2' : 'Preference cameras with physically large sensors.  All else being equal, a larger sensor can capture a wider field of view e.g. in a microscope or telescope.',
     'intensified' : 'Preference cameras with image intensifiers.  Intensifiers allow for high temporal (time) resolution, and provide signifiant gain.',
     'maxGateSpeed' : 'Preference cameras with short intensifier gate widths.  Shorter gate widths allow finer time resolution.',
     'QE10eV' : 'Sensor quantum efficiency at 10 electron Volts, in terms of photons in vs. electrons out.',

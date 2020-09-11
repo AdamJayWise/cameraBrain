@@ -109,7 +109,7 @@ function createLikert(param, label, vector, targetSelection, boolean = false){
 
 likertDiv = $('#generalInput')
 
-createLikert('speed', 'Max . Framerate', params, likertDiv);
+createLikert('speed', 'Framerate', params, likertDiv);
 createLikert('spatialRes', 'Spatial Resolution', params, likertDiv);
 
 createLikert('peakQE', 'Peak QE', params, likertDiv);
