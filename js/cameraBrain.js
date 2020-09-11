@@ -123,7 +123,7 @@ createLikert('lowReadNoise', 'Low Read Noise', params, likertDiv);
 createLikert('squareness', 'Square Sensor', params, likertDiv);
 createLikert('rectangularness', 'Wide Sensor', params, likertDiv);
 createLikert('numPixels', 'Number of Pixels', params, likertDiv);
-createLikert('sensorArea', 'Size, Diagonal', params, likertDiv);
+createLikert('sensorAreamm2', 'Sensor Area', params, likertDiv);
 
 likertDiv = $('#iCamInput')
 createLikert('intensified', 'Intensified Camera', params, likertDiv, boolean = true);
